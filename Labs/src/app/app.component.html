@@ -1,0 +1,19 @@
+<div>
+  <h2>Vote for your player of the season</h2>
+  <ul>
+    <li *ngFor="let player of playerData">
+      <img [src]="player.image" [alt]="player.name" (click)="castVote(player.shortName)" [ngClass]="getVoteClasses(player.shortName)">
+      <h4>{{player.name}}</h4>
+
+      <p>{{player.Runs}} Runs</p>
+      <p>{{player.Wickets}} Wickets</p>
+      <p>{{player.Catches}} Catches</p>
+    </li>
+
+  </ul>
+
+  <div class="chart-box" *ngIf="voted">
+    <h2>How others voted</h2>
+    <canvas baseChart [data]="chartData" [labels]="chartLabels" [chartType]="chartType"></canvas>
+  </div>
+</div>
